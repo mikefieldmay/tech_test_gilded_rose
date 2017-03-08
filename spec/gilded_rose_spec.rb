@@ -22,7 +22,7 @@ describe GildedRose do
       end
     end
 
-    context 'when the sale in date is 0' do
+    context 'when the sale in date is less than 0' do
       it "quality degrades twice as fast" do
         item = Item.new("Hat", 0, 8)
         items = [item]
@@ -42,7 +42,7 @@ describe GildedRose do
       end
     end
 
-    context "Legendery items" do
+    context "Legendary items" do
       it 'never have to be sold or decrease in quality' do
         item = Item.new("Sulfuras, Hand of Ragnaros", 5, 8)
         items = [item]
@@ -70,8 +70,8 @@ describe GildedRose do
         expect(item.quality).to eq 11
       end
 
-      it 'increases in quality 3 times between 0 and 5 days' do
-        item = Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 8)
+      it 'has no quality after sell in date' do
+        item = Item.new("Backstage passes to a TAFKAL80ETC concert", -1, 8)
         items = [item]
         gilded_rose = GildedRose.new(items)
         gilded_rose.update_quality
