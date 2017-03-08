@@ -1,7 +1,7 @@
 #!/usr/bin/ruby -w
 
-require './lib/gilded_rose'
-require 'item'
+require_relative '../lib/gilded_rose'
+require_relative '../lib/item'
 
 puts "OMGHAI!"
 items = [
